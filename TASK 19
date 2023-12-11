@@ -1,0 +1,60 @@
+TASK 19
+For the given URL "https://www.guvi.in/register," let's explore all possible locators for a few elements on the registration page:
+
+ID Locator:
+
+Example: <input type="text" id="firstname" name="firstname" />
+Locator: By.id("firstname")
+Class Name Locator:
+
+Example: <input type="text" class="input-field" name="lastname" />
+Locator: By.className("input-field")
+Tag Name Locator:
+
+Example: <button type="submit" class="btn btn-primary btn-register">Register</button>
+Locator: By.tagName("button")
+CSS Selector Locator:
+
+Example: <input type="email" name="email" class="input-field" placeholder="Email" required>
+Locator: By.cssSelector("input[name='email']")
+XPath Locator:
+
+Example: <label for="password">Password</label>
+Locator: By.xpath("//label[@for='password']")
+Here is a simple Java Selenium script to demonstrate the usage of these locators for the given URL:
+
+java
+Copy code
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class LocatorExample {
+
+    public static void main(String[] args) {
+        // Set the path to the chromedriver executable
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Create a Chrome browser instance
+        WebDriver driver = new ChromeDriver();
+
+        // Maximize the browser window
+        driver.manage().window().maximize();
+
+        // Navigate to the registration page
+        driver.get("https://www.guvi.in/register");
+
+        // Example usage of locators
+        WebElement firstNameField = driver.findElement(By.id("firstname"));
+        WebElement inputFieldWithClass = driver.findElement(By.className("input-field"));
+        WebElement registerButton = driver.findElement(By.tagName("button"));
+        WebElement emailInputField = driver.findElement(By.cssSelector("input[name='email']"));
+        WebElement passwordLabel = driver.findElement(By.xpath("//label[@for='password']"));
+
+        // Perform actions with the located elements (e.g., input values, click buttons, etc.)
+
+        // Close the browser
+        driver.quit();
+    }
+}
